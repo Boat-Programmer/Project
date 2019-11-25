@@ -72,27 +72,30 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"> แบบฟอร์มติดต่อเรา</h5>
-                        <form id="formContact">
+                        <form id="formContact" method="post" action="php/contact.php">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="name">ชื่อ</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="ชื่อของคุณ">
+                                    <input type="text" class="form-control" id="name" name="name" required placeholder="ชื่อของคุณ">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="name">เบอร์โทรศัพท์</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="เบอร์โทรศัพท์">
+                                    <input type="text" class="form-control" id="phone" name="phone" required placeholder="เบอร์โทรศัพท์">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="name">อีเมล์</label>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="อีเมล์ของคุณ">
+                                    <input type="text" class="form-control" id="email" name="email" required placeholder="อีเมล์ของคุณ">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="message">ข้อความของคุณ</label>
                                 <textarea id="message" name="message" rows="5" class="form-control"
-                                    placeholder="เขียนข้อความของคุณที่นี้"></textarea>
+                                    required placeholder="เขียนข้อความของคุณที่นี้"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-warning d-block mx-auto">ส่งข้อความ</button>
+                            <div id="recaptcha-wrapper" class="text-center my-2">
+                                <div class="g-recaptcha d-inline-block" data-callback="recaptchaCallback" data-sitekey="6LepfsQUAAAAAI7pxkOxZU85P2Frx94aXhQRE_ah"></div>
+                            </div>
+                            <button type="submit" name="btn-submit" id="btn-submit" class="btn btn-warning d-block mx-auto disabled">ส่งข้อความ</button>
                         </form>
                     </div>
                 </div>
@@ -158,8 +161,39 @@
 })
 
 function recaptchaCallback() {
-    $('#submit').removeAttr('disabled');
+    $('#btn-submit').removeAttr('disabled');
 }
+
+$(function(){
+            // global variables
+            captchaResized = false;
+            captchaWidth = 304;
+            captchaHeight = 78;
+            captchaWrapper = $('#recaptcha-wrapper');
+            captchaElements = $('#rc-imageselect, .g-recaptcha');
+
+            $(window).on('resize', function() {
+                resizeCaptcha();
+            });
+
+            resizeCaptcha();
+        });
+
+        function resizeCaptcha() {
+            if (captchaWrapper.width() >= captchaWidth) {
+                if (captchaResized) {
+                    captchaElements.css('transform', '').css('-webkit-transform', '').css('-ms-transform', '').css('-o-transform', '').css('transform-origin', '').css('-webkit-transform-origin', '').css('-ms-transform-origin', '').css('-o-transform-origin', '');
+                    captchaWrapper.height(captchaHeight);
+                    captchaResized = false;
+                }
+            } else {
+                var scale = (1 - (captchaWidth - captchaWrapper.width()) * (0.05/15));
+                captchaElements.css('transform', 'scale('+scale+')').css('-webkit-transform', 'scale('+scale+')').css('-ms-transform', 'scale('+scale+')').css('-o-transform', 'scale('+scale+')').css('transform-origin', '0 0').css('-webkit-transform-origin', '0 0').css('-ms-transform-origin', '0 0').css('-o-transform-origin', '0 0');
+                captchaWrapper.height(captchaHeight * scale);
+                if (captchaResized == false) captchaResized = true;
+            }
+        }
+        // resizeCaptcha();
     </script>
    
 </body>

@@ -2,7 +2,7 @@
 
     require_once('connect.php');
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit_login'])) {
 
         $username = $_POST['username'];
         $password = $_POST['password_login'];
@@ -26,13 +26,13 @@
             }else{
 
                 echo '<script> alert("รหัสผ่านไม่ถูกต้อง") </script>';
-                header('Refresh:0; url=../login.php');
+                header('Refresh:0; url=../index.php');
 
             }
 
         } else {
             echo '<script> alert("ผู้ใช้คนนี้ไม่มีอยู่จริง") </script>';
-            header('Refresh:0; url=../login.php');
+            header('Refresh:100; url=../index.php');
         }
 
     } else {

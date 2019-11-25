@@ -30,20 +30,20 @@
                   redirect('index');
               } else {
                   echo "<script> alert('สมัครสมาชิกไม่สำเร็จ โปรดลองใหม่หรือติดต่อผู้ดูแลระบบ'); </script>";
-                  redirect('register');
+                  redirect('index');
               }
              } else {
                 echo '<script> alert("ชื่อผู้ใช้นี้ ถูกใช้ไปแล้ว \nโปรดกรอกข้อมูลใหม่อีกครั้ง") </script>';
-                redirect('register');
+                redirect('index');
              }
              
          } else {
              echo "<script> alert('Verification Failed!'); </script>";
-             redirect('register');
+             redirect('index');
          }
 
      } else {
-        redirect('register');
+        redirect('index');
      }
 
      function redirect($path) {
