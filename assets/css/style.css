@@ -110,6 +110,10 @@ html, body{
     text-align: center;
 }
 
+.btn-group-custom a:hover{
+    text-decoration: none;
+}
+
 .blog-image{
     padding: 200px 0px 120px;
     text-align: center;

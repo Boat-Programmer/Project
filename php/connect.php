@@ -6,6 +6,6 @@
     if ($conn->connect_errno){
         die("Connection Failed! ".$conn->connect_error);
     }
-
+    $base_path_blog = 'assets/images/blog/';
 
 ?>

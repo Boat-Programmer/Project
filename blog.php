@@ -1,15 +1,10 @@
 <?php
 
    require_once('php/connect.php');
-   
-   if(isset($_GET['tag'])){
-       $tag =$_GET['tag'];
-   } else {
-       $tag = 'all';
-   }
 
+   $base_path_blog = 'assets/images/blog/';
    $tag = isset($_GET['tag']) ? $_GET['tag'] : 'all';
-   $sql = "SELECT * FROM `articles` WHERE `tag` LIKE '%".$tag."%'";
+   $sql = "SELECT * FROM `articles` WHERE `tag` LIKE '%".$tag."%' AND `status` = 'true'";
 
    $result = $conn->query($sql) or die($conn->error);
    if (!$result) {
@@ -56,28 +51,34 @@
         <div class="row pb-4">
             <div class="col-12 text-center">
                 <div class="btn-group-custom">
-                    <a href="blog.php?tag=all" class="btn btn-outline-warning">
+                    <a href="blog.php?tag=all" class="btn btn-outline-warning <?php echo $tag == 'all' ? 'active': '' ?>">
                         ทั้งหมด
                     </a>
-                    <a href="blog.php?tag=EasyPay?" class="btn btn-outline-warning">
+                    <a href="blog.php?tag=EasyPay?" class="btn btn-outline-warning <?php echo $tag == 'EasyPay?' ? 'active': '' ?>">
                         EasyPay?
                     </a>
-                    <a href="blog.php?tag=การใช้งาน" class="btn btn-outline-warning">
+                    <a href="blog.php?tag=การใช้งาน" class="btn btn-outline-warning <?php echo $tag == 'การใช้งาน' ? 'active': '' ?>">
                         คู่มือการใช้
                     </a>
-                    <a href="blog.php?tag=ข้อควรระวัง" class="btn btn-outline-warning">
+                    <a href="blog.php?tag=ข้อควรระวัง" class="btn btn-outline-warning <?php echo $tag == 'ข้อควรระวัง' ? 'active': '' ?>">
                         ข้อระวัง
+                    </a>
+                    <a href="blog.php?tag=ประโยชน์" class="btn btn-outline-warning <?php echo $tag == 'ประโยชน์' ? 'active': '' ?>">
+                        ประโยชน์
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="row">
-                <?php while($row = $result->fetch_assoc()) { ?>
+                <?php 
+                if($result->num_rows){
+                while($row = $result->fetch_assoc()) { 
+                    ?>
                 <section class="col-12 col-sm-6 col-md-4 p-2">
                     <div class="card h-100">
                         <a href="blog-detail.php?id=<?php echo $row['id'] ?>" class="warpper-card-img">
-                            <img class="card-img-top" src="<?php echo $row['image'] ?>" alt="Card image cap">
+                            <img class="card-img-top" src="<?php echo $base_path_blog.$row['image'] ?>" alt="Card image cap">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['subject'] ?></h5>
@@ -89,6 +90,14 @@
                     </div>
                 </section>
 
+                <?php 
+                    }
+
+                } else { 
+                ?>
+                <section class="col-12">
+                    <p class="text-center">ไม่มีข้อมูล</p>
+                </section>
                 <?php } ?>
             </div>
     </section>

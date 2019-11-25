@@ -2,7 +2,8 @@
 
    require_once('php/connect.php');
 
-   $sql = "SELECT * FROM articles WHERE id = '".$_GET['id']."' ";
+   $base_path_blog = 'assets/images/blog/';
+   $sql = "SELECT * FROM articles WHERE id = '".$_GET['id']."' AND `status` = 'true'";
    $result = $conn->query($sql) or die($conn->error);
    
    if ($result->num_rows > 0){
@@ -10,6 +11,11 @@
    } else {
        header('Location: blog.php');
    }
+
+   $sql_RAND = "SELECT * FROM `articles` WHERE `status` = 'true' ORDER BY RAND()";
+   $result_RAND = $conn->query($sql_RAND);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +43,7 @@
 
     <!-- Section Page-title -->
     <header data-jarallax='{"speed" : 0.6 }' class="jarallax"
-        style="background-image: url('<?php echo $row['image'] ?>');">
+        style="background-image: url('<?php echo $base_path_blog.$row['image'] ?>');">
         <div class="blog-image">
             <div class="container">
                 <div class="row">
@@ -63,91 +69,22 @@
         </div>
         <div class="col-12">
             <div class="owl-carousel owl-theme">
+            <?php while($row_RAND = $result_RAND->fetch_assoc()) { ?>
                 <section class="col-12 p-2">
                     <div class="card h-100">
-                        <a href="#" class="warpper-card-img">
-                            <img class="card-img-top" src="#" alt="Card image cap">
+                        <a href="blog-detail.php?id=<?php echo $row_RAND['id'] ?>" class="warpper-card-img">
+                            <img class="card-img-top" src="<?php echo $base_path_blog.$row_RAND['image'] ?>" alt="Card image cap">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
+                            <h5 class="card-title"><?php echo $row_RAND['subject'] ?></h5>
+                            <p class="card-text"><?php echo $row_RAND['sub_title'] ?></p>
                         </div>
                         <div class="p-3">
-                            <a href="#" class="btn btn-warning btn-block">อ่านเพิ่มเติม</a>
+                            <a href="blog-detail.php?id=<?php echo $row_RAND['id'] ?>" class="btn btn-warning btn-block">อ่านเพิ่มเติม</a>
                         </div>
                     </div>
                 </section>
-                <section class="col-12 p-2">
-                    <div class="card h-100">
-                        <a href="#" class="warpper-card-img">
-                            <img class="card-img-top" src="#" alt="Card image cap">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                        </div>
-                        <div class="p-3">
-                            <a href="#" class="btn btn-warning btn-block">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </section>
-                <section class="col-12 p-2">
-                    <div class="card h-100">
-                        <a href="#" class="warpper-card-img">
-                            <img class="card-img-top" src="#" alt="Card image cap">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                        </div>
-                        <div class="p-3">
-                            <a href="#" class="btn btn-warning btn-block">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </section>
-                <section class="col-12 p-2">
-                    <div class="card h-100">
-                        <a href="#" class="warpper-card-img">
-                            <img class="card-img-top" src="#" alt="Card image cap">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                        </div>
-                        <div class="p-3">
-                            <a href="#" class="btn btn-warning btn-block">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </section>
-                <section class="col-12 p-2">
-                    <div class="card h-100">
-                        <a href="#" class="warpper-card-img">
-                            <img class="card-img-top" src="#" alt="Card image cap">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                        </div>
-                        <div class="p-3">
-                            <a href="#" class="btn btn-warning btn-block">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </section>
+                <?php } ?>
             </div>
         </div>
     </section>
