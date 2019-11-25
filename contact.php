@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog</title>
+    <title>Contact</title>
 
     <!-- Link Libery file .css && fonttext font.google -->
     <link href="https://fonts.googleapis.com/css?family=Prompt&display=swap" rel="stylesheet">
@@ -93,7 +93,7 @@
                                     required placeholder="เขียนข้อความของคุณที่นี้"></textarea>
                             </div>
                             <div id="recaptcha-wrapper" class="text-center my-2">
-                                <div class="g-recaptcha d-inline-block" data-callback="recaptchaCallback" data-sitekey="6LepfsQUAAAAAI7pxkOxZU85P2Frx94aXhQRE_ah"></div>
+                                <div class="g-recaptcha d-inline-block" data-callback="recaptchaCallback1" data-sitekey="6LepfsQUAAAAAI7pxkOxZU85P2Frx94aXhQRE_ah"></div>
                             </div>
                             <button type="submit" name="btn-submit" id="btn-submit" class="btn btn-warning d-block mx-auto disabled">ส่งข้อความ</button>
                         </form>
@@ -160,7 +160,7 @@
     });
 })
 
-function recaptchaCallback() {
+function recaptchaCallback1() {
     $('#btn-submit').removeAttr('disabled');
 }
 
