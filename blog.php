@@ -63,8 +63,8 @@
                     <a href="blog.php?tag=ข้อควรระวัง" class="btn btn-outline-warning <?php echo $tag == 'ข้อควรระวัง' ? 'active': '' ?>">
                         ข้อระวัง
                     </a>
-                    <a href="blog.php?tag=ประโยชน์" class="btn btn-outline-warning <?php echo $tag == 'ประโยชน์' ? 'active': '' ?>">
-                        ประโยชน์
+                    <a href="blog.php?tag=ความปลอดภัย" class="btn btn-outline-warning <?php echo $tag == 'ความปลอดภัย' ? 'active': '' ?>">
+                        ความปลอดภัย
                     </a>
                 </div>
             </div>

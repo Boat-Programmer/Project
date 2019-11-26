@@ -99,7 +99,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-key"></i></div>
                             </div>
-                            <input type="password" class="form-control" id="password_login" name="password_login"
+                            <input type="password" class="form-control" id="password" name="password"
                                 placeholder="Password" required>
                         </div>
 
@@ -171,23 +171,22 @@
                         </div>
 
                         <div class="form-group mb-2 mr-sm-2">
-                            <div class="g-recaptcha" data-callback="recaptchaCallback1" data-sitekey="6LfWCbwUAAAAAANnBvwO7G8AqLXkt2ZKKQZa1VCc"></div>
+                            <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LfWCbwUAAAAAANnBvwO7G8AqLXkt2ZKKQZa1VCc"></div>
                         </div>
 
-                        <button type="submit" name="submit" id="submit" disabled class="btn btn-warning btn-block mb-2">สมัครสมาชิก</button>
+                        <button type="submit" name="btn-submit" id="btn-submit" disabled class="btn btn-warning btn-block mb-2">สมัครสมาชิก</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
+  <script>
+  
+  function recaptchaCallback() {
+    $('#btn-submit').removeAttr('disabled');
+   }
 
-    function recaptchaCallback() {
-    $('#submit').removeAttr('disabled');
-    }
-    
-    
-    </script>
+  </script>
     
     

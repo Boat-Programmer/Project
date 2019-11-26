@@ -1,6 +1,6 @@
 <?php 
   require_once('connect.php');
-  if(isset($_POST['btn-submit'])){
+  if(isset($_POST['btn'])){
       $secretKey = "6LepfsQUAAAAAB9NowqerHqbJWPrcd9Z76SkMiB3";
       $responsKey = $_POST['g-recaptcha-response'];
       $remoteIP = $_SERVER['REMOTE_ADDR'];

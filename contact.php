@@ -95,7 +95,7 @@
                             <div id="recaptcha-wrapper" class="text-center my-2">
                                 <div class="g-recaptcha d-inline-block" data-callback="recaptchaCallback1" data-sitekey="6LepfsQUAAAAAI7pxkOxZU85P2Frx94aXhQRE_ah"></div>
                             </div>
-                            <button type="submit" name="btn-submit" id="btn-submit" class="btn btn-warning d-block mx-auto disabled">ส่งข้อความ</button>
+                            <button type="submit" name="btn" id="btn" disabled class="btn btn-warning d-block mx-auto ">ส่งข้อความ</button>
                         </form>
                     </div>
                 </div>
@@ -161,8 +161,9 @@
 })
 
 function recaptchaCallback1() {
-    $('#btn-submit').removeAttr('disabled');
+    $('#btn').removeAttr('disabled');
 }
+    
 
 $(function(){
             // global variables

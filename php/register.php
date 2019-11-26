@@ -2,7 +2,7 @@
     
     require_once('connect.php');
 
-     if(isset($_POST['submit'])){
+     if(isset($_POST['btn-submit'])){
          $secretKey = "6LfWCbwUAAAAAAvW6uqeRR3UZGBFxTuUgj64pavV";
          $responseKey = $_POST['g-recaptcha-response'];
          $remoteIP = $_SERVER['REMOTE_ADDR'];
@@ -14,7 +14,7 @@
              $check_username = $conn->query($check_sql) or die($conn->error);
 
              if (!$check_username->num_rows) {
-                $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $hashed_password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
                 $sql_create = "INSERT INTO `members` (`name`, `email`, `phone`, `username`, `password`, `created_at`)
                           VALUES ('".$_POST['name']."', 
                                   '".$_POST['email']."', 
@@ -47,6 +47,6 @@
      }
 
      function redirect($path) {
-        header('Refresh:0; url=../'.$path.'.php');
+        header('Refresh:100; url=../'.$path.'.php');
      }
 ?>

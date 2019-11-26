@@ -5,7 +5,7 @@
     if (isset($_POST['submit_login'])) {
 
         $username = $_POST['username'];
-        $password = $_POST['password_login'];
+        $password = $_POST['password'];
 
         $stmt = $conn->prepare("SELECT * FROM members WHERE username = ?");
         $stmt->bind_param('s', $username);
@@ -26,7 +26,7 @@
             }else{
 
                 echo '<script> alert("รหัสผ่านไม่ถูกต้อง") </script>';
-                header('Refresh:0; url=../index.php');
+                header('Refresh:100; url=../index.php');
 
             }
 
