@@ -1,7 +1,7 @@
 <?php 
 
     require_once('connect.php');
-
+    session_start();
     if (isset($_POST['submit_login'])) {
 
         $username = $_POST['username'];
@@ -19,9 +19,18 @@
             {
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['name'] = $row['name'];
-                $_SESSION['image'] =$row['image'];
-                
-                header('location:../index.php');
+                $_SESSION['image'] = $row['image'];
+                $_SESSION['last_login'] = $row['last_login'];
+
+                $update = "UPDATE `members` SET `last_login` = '".date("Y-m-d H:i:s")."' WHERE `members`.`id` = '".$row['id']."' ";
+                $result_update = $conn->query($update); 
+
+                if ($result_update) {
+                    header('Refresh:0; url=../dashboard.php');
+                  } else {
+                    echo'<script> alert("Error!!!")</script>';
+                  }
+
 
             }else{
 

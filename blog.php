@@ -1,7 +1,7 @@
 <?php
 
    require_once('php/connect.php');
-
+   session_start();
    $base_path_blog = 'assets/images/blog/';
    $tag = isset($_GET['tag']) ? $_GET['tag'] : 'all';
    $sql = "SELECT * FROM `articles` WHERE `tag` LIKE '%".$tag."%' AND `status` = 'true'";
@@ -54,17 +54,14 @@
                     <a href="blog.php?tag=all" class="btn btn-outline-warning <?php echo $tag == 'all' ? 'active': '' ?>">
                         ทั้งหมด
                     </a>
-                    <a href="blog.php?tag=EasyPay?" class="btn btn-outline-warning <?php echo $tag == 'EasyPay?' ? 'active': '' ?>">
-                        EasyPay?
+                    <a href="blog.php?tag=ข่าวสาร" class="btn btn-outline-warning <?php echo $tag == 'ข่าวสาร' ? 'active': '' ?>">
+                        ข่าวสาร
                     </a>
-                    <a href="blog.php?tag=การใช้งาน" class="btn btn-outline-warning <?php echo $tag == 'การใช้งาน' ? 'active': '' ?>">
+                    <a href="blog.php?tag=การใช้งาน" class="btn btn-outline-warning <?php echo $tag == 'คู่มือการใช้' ? 'active': '' ?>">
                         คู่มือการใช้
                     </a>
-                    <a href="blog.php?tag=ข้อควรระวัง" class="btn btn-outline-warning <?php echo $tag == 'ข้อควรระวัง' ? 'active': '' ?>">
-                        ข้อระวัง
-                    </a>
-                    <a href="blog.php?tag=ความปลอดภัย" class="btn btn-outline-warning <?php echo $tag == 'ความปลอดภัย' ? 'active': '' ?>">
-                        ความปลอดภัย
+                    <a href="blog.php?tag=วิธีแก้ปัญหา" class="btn btn-outline-warning <?php echo $tag == 'วิธีแก้ปัญหา' ? 'active': '' ?>">
+                        วิธีแก้ปัญหา
                     </a>
                 </div>
             </div>

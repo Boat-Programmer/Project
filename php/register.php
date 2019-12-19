@@ -47,6 +47,6 @@
      }
 
      function redirect($path) {
-        header('Refresh:; url=../'.$path.'.php');
+        header('Refresh:0; url=../'.$path.'.php');
      }
 ?>

@@ -82,3 +82,7 @@ $( document ).ready(function(){
 $('.to-top').click(function (){
     $('html, body').animate({scrollTop: '0px'}, 800);
 })
+
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );

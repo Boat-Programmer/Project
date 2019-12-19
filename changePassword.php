@@ -1,5 +1,5 @@
 <?php 
-
+   session_start();
    require_once('php/connect.php');
    if (!isset($_SESSION['id'])) {
        header('location:index.php');

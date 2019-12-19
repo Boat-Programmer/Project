@@ -82,8 +82,8 @@
             </div>
             <div class="form-group">
               <label>Select Permission</label>
-              <select class="form-control" required name="status">
-                <option value="" disabled selected>Select Permission</option>
+              <select class="form-control" require name="status">
+                <option value="" disabled selected>Select Permisson</option>
                 <option value="superadmin">Super Admin</option>
                 <option value="admin">Admin</option>
               </select>

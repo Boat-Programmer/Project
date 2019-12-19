@@ -1,9 +1,11 @@
 <?php 
-  include_once('../authen.php');
-  $id = $_GET['id'];
-  $sql = "SELECT first_name, last_name, username, status FROM `admin` WHERE `id` = '".$id."' ";
-  $result = $conn->query($sql);
-  $row = $result->fetch_assoc();
+
+    include_once('../authen.php');
+    $id = $_GET['id'];
+    $sql = "SELECT first_name, last_name, username, status FROM `admin` WHERE `id` = '".$id."' ";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,13 +87,12 @@
             <div class="form-group">
               <label>Select Permission</label>
               <select class="form-control" required name="status">
-                <option value="" disabled selected>Select Permission</option>
-                <option value="superadmin" <?php echo $row['status'] == 'superadmin'? 'selected': '' ?>>Super Admin</option>
+                <option value="superadmin" <?php echo $row['status'] == 'superadmin'? 'selected': '' ?>>SuperAdmin</option>
                 <option value="admin" <?php echo $row['status'] == 'admin'? 'selected': '' ?>>Admin</option>
               </select>
             </div>
-
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
+   
+            <input type="hidden" name="id" value="<?php echo $id ?>">
 
           </div>
           <div class="card-footer">

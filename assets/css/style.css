@@ -18,6 +18,24 @@ html, body{
     font-family: 'Prompt', sans-serif;
 }
 
+.border-short-bottom{
+    position: relative;
+    padding: 20px 0;
+    margin-bottom: 25px;
+
+}
+
+.border-short-bottom::after{
+    position: absolute;
+    content: "";
+    width: 100px;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -50px;
+    background: #595959;
+}
+
 /* Section Navbar */
 .bg-alpha{
     background: rgba(0, 0, 0, 0.5);
@@ -67,23 +85,6 @@ html, body{
     background: #f0ad4e;
 }
 
-.border-short-bottom{
-    position: relative;
-    padding: 20px 0;
-    margin-bottom: 25px;
-
-}
-
-.border-short-bottom::after{
-    position: absolute;
-    content: "";
-    width: 100px;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    margin-left: -50px;
-    background: #595959;
-}
 
 /* Section Blog */
 .warpper-card-img{
@@ -106,7 +107,7 @@ html, body{
 
 .btn-group-custom a{
     margin-bottom: 0.5rem;
-    width: 100px;
+    width: 200px;
     text-align: center;
 }
 

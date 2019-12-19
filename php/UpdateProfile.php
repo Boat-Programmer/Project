@@ -1,6 +1,7 @@
 <?php 
    
    require_once('connect.php');
+   session_start();
 
    if (isset($_POST['submit']) && isset($_SESSION['id'])) {
        $sql = "UPDATE `members` SET 
@@ -17,7 +18,7 @@
             header('Refresh:0; url=../profile.php');
        } else {
             echo "<script> alert('แก้ไขข้อมูล ไม่สำเร็จแล้ว \nโปรดติดต่อผู้ดูแลระบบ'); </script>";
-            header('Refresh:3; url=../profile.php');
+            header('Refresh:0; url=../profile.php');
        }
 
    } else {

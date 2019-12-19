@@ -10,26 +10,33 @@
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
-    if (!empty($row) && password_verify($password, $row['password'])){
+    echo '<pre>',print_r($row),'</pre>';
 
-      $_SESSION['authen_id'] = $row['id'];
-      $_SESSION['first_name'] = $row['first_name'];
-      $_SESSION['last_name'] = $row['last_name'];
-      $_SESSION['status'] = $row['status'];
-      $_SESSION['last_login'] = $row['last_login'];
-      
-      $update = "UPDATE `admin` SET `last_login` = '".date("Y-m-d H:i:s")."' WHERE `admin`.`id` = '".$row['id']."' ";
-      $result_update = $conn->query($update); 
+    if(!empty($row) && password_verify($password, $row['password'])){
 
-      if ($result_update) {
-        header('Location: pages/dashboard/'); 
-      } else {
-        echo'<script> alert("Error!!!")</script>';
-      }
+       $_SESSION['authen_id'] = $row['id'];
+       $_SESSION['first_name'] = $row['first_name'];
+       $_SESSION['last_name'] = $row['last_name'];
+       $_SESSION['status'] = $row['status'];
+       $_SESSION['last_login'] = $row['last_login'];
+
+       $update = "UPDATE `admin` SET `last_login` = '".date("Y-m-d H:i:s")."' WHERE `id` = '".$row['id']."' ";
+       $result_update = $conn->query($update);
+
+       if($result_update){
+
+        header('Location: pages/dashboard');
+
+       } else {
+        
+        echo '<script> alert("Error!!!")</script>';
+
+       }
+       header('Location: pages/dashboard');
 
     } else {
-
-      echo'<script> alert("ชื่อผู้ใช้งาน และ รหัสผ่านไม่ถูกต้อง")</script>';
+      
+      echo '<script> alert("ชื่อผู้ใช้ และ รหัสผ่านไม่ถูกต้อง") </script>';
 
     }
   }

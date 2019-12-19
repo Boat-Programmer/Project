@@ -15,31 +15,32 @@
             <!-- setting text Right -> mr-auto && Left -> ml-auto  && Text-Center -->
             <ul class="navbar-nav ml-auto text-center">
                 <li class="nav-item <?php echo $file_name == 'index' ? 'active': '' ?>">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="index.php"><i class="fas fa-home fa-fw"></i> Home</a>
                 </li>
                 <li class="nav-item <?php echo $file_name == 'about' ? 'active': '' ?>">
-                    <a class="nav-link" href="about.php">About us</a>
+                    <a class="nav-link" href="about.php"><i class="fas fa-address-card fa-fw"></i> About us</a>
                 </li>
                 <li class="nav-item <?php echo $file_name == 'blog' || $file_name == 'blog-detail' ? 'active': '' ?>">
-                    <a class="nav-link" href="blog.php">Blog</a>
+                    <a class="nav-link" href="blog.php"><i class="fas fa-clipboard-list fa-fw"></i> Blog</a>
                 </li>
                 <li class="nav-item <?php echo $file_name == 'contact' ? 'active': '' ?>">
-                    <a class="nav-link" href="contact.php">Contents</a>
+                    <a class="nav-link" href="contact.php"><i class="fas fa-comments fa-fw"></i> Contents</a>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo $_SESSION['name']; ?>
-                        <img src="assets/images/<?php echo $_SESSION['image']; ?>" class="rounded-circle" width="30px"
+                        <img src="assets/images/members/<?php echo $_SESSION['image']; ?>" class="rounded-circle" width="30px"
                             alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    
-                        <a class="dropdown-item" href="profile.php">ประวัติส่วนตัว</a>
-                        <a class="dropdown-item" href="changePassword.php">เปลี่ยนรหัสผ่าน</a>
+                        <a class="dropdown-item" href="dashboard.php"><i class="fas fa-tachometer-alt fa-fw"></i> Dashboard</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="php/logout.php">ออกจากระบบ</a>
+                        <a class="dropdown-item" href="profile.php"><i class="fas fa-edit fa-fw"></i> ประวัติส่วนตัว</a>
+                        <a class="dropdown-item" href="changePassword.php"><i class="fas fa-unlock-alt fa-fw"></i> เปลี่ยนรหัสผ่าน</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="php/logout.php"><i class="fas fa-sign-out-alt fa-fw"></i> ออกจากระบบ</a>
                     </div>
                 </li>
             </ul>
@@ -47,25 +48,25 @@
             <?php } else { ?>
             <ul class="navbar-nav ml-auto text-center">
             <li class="nav-item <?php echo $file_name == 'index' ? 'active': '' ?>">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="index.php"><i class="fas fa-home fa-fw"></i> Home</a>
                 </li>
                 <li class="nav-item <?php echo $file_name == 'about' ? 'active': '' ?>">
-                    <a class="nav-link" href="about.php">About us</a>
+                    <a class="nav-link" href="about.php"><i class="fas fa-address-card fa-fw"></i> About us</a>
                 </li>
                 <li class="nav-item <?php echo $file_name == 'blog' || $file_name == 'blog-detail' ? 'active': '' ?>">
-                    <a class="nav-link" href="blog.php">Blog</a>
+                    <a class="nav-link" href="blog.php"><i class="fas fa-clipboard-list fa-fw"></i> Blog</a>
                 </li>
                 <li class="nav-item <?php echo $file_name == 'contact' ? 'active': '' ?>">
-                    <a class="nav-link" href="contact.php">Contents</a>
+                    <a class="nav-link" href="contact.php"><i class="fas fa-comments fa-fw"></i> Contents</a>
                 </li>
-                <button type="button" class="btn btn-warning m-md-1 mt-3" data-toggle="modal"
-                    data-target="#login">
-                    เข้าสู่ระบบ
-                </button>
-                <button type="button" class="btn btn-warning m-md-1 mt-3" data-toggle="modal"
-                    data-target="#register">
-                    สมัครสมาชิก
-                </button>
+                <li class="nav-item" >
+                    <a class="nav-link" data-toggle="modal"data-target="#login">
+                    <i class="fas fa-sign-in-alt fa-fw"></i> เข้าสู่ระบบ</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link" data-toggle="modal"
+                    data-target="#register"><i class="fas fa-user-plus fa-fw"></i> สมัครสมาชิก</a>
+                </li>
             </ul>
             <?php } ?>
         </div>

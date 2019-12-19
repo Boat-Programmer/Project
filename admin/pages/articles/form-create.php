@@ -29,6 +29,8 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- DataTables -->
   <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap4.min.css">
+  <!-- Bootstrap Toggle -->
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -105,25 +107,27 @@
               </div>
               <div class="card-body">
                 <div class="mb-3">
-                  <textarea id="detail" name="detail" style="width: 100%">This is my Contents </textarea>
+                  <textarea  name="editor1" id="editor1" rows="10" cols="80">
+                    This is my textarea to be replaced with CKEditor.
+                  </textarea>
                 </div>
               </div>
             </div>
 
             <div class="form-group">
               <label>Select a Tags</label>
-              <select class="form-control select2" multiple="multiple" data-placeholder="Select a Tags" style="width: 100%;">
-                <option value="html">EasyPay</option>
-                <option value="css">css</option>
-                <option value="javascript">javascript</option>
-                <option value="php">php</option>
-                <option value="mysql">mysql</option>
+              <select class="form-control select2" name="tags[]" multiple="multiple" data-placeholder="Select a Tags" style="width: 100%;">
+                <option value="ข่าวสาร">ข่าวสาร</option>
+                <option value="คู่มือใช้งาน">คู่มือใช้งาน</option>
+                <option value="วิธีแก้ปัญหา">วิธีแก้ปัญหา</option>
               </select>
             </div>
+      
+            <input type="checkbox" name="status" checked data-toggle="toggle" data-on="Active" data-off ="Block" data-onstyle="success">
 
           </div>
           <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" name="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
       </div>    
@@ -139,7 +143,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../plugins/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- SlimScroll -->
@@ -157,6 +161,9 @@
 <script src="../../plugins/ckeditor/ckeditor.js"></script>
 <!-- Select2 -->
 <script src="../../plugins/select2/select2.full.min.js"></script>
+<!-- Bootstrap Toggle -->
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 
 <script>
   $(function () {
@@ -182,19 +189,16 @@
         }
     })
 
-    ClassicEditor
-      .create(document.querySelector('#detail'))
-      .then(function (editor) {
-        // The editor instance
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
+
 
     //Initialize Select2 Elements
     $('.select2').select2()
 
+
   });
+
+  
+
   
 </script>
 

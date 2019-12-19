@@ -1,6 +1,7 @@
 <?php 
 
   require_once('php/connect.php');
+  session_start();
   $tag = isset($_GET['tag']) ? $_GET['tag'] : 'all';
   $sql = "SELECT * FROM articles WHERE `status` = 'true' LIMIT 6";
   $result = $conn->query($sql);

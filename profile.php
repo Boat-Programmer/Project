@@ -1,5 +1,5 @@
 <?php 
-
+   session_start();
    require_once('php/connect.php');
    if (!isset($_SESSION['id'])) {
        header('location:index.php');
@@ -74,7 +74,7 @@
                         <label for="phone">ที่อยู่</label>
                         <textarea class="form-control" id="address" rows="5" disabled><?php echo $row['address']; ?></textarea>
                     </div>
-
+                    <a href="dashboard.php" class="btn btn-warning float-left">ย้อนกลับ</a>
                     <a href="profile-edit.php" class="btn btn-warning float-right">แก้ไขข้อมูล</a>
 
                </div>

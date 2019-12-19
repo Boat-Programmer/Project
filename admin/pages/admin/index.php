@@ -1,7 +1,10 @@
 <?php 
-include_once('../authen.php');
-$sql = "SELECT * FROM `admin`";
-$result = $conn->query($sql);
+  
+  include_once('../authen.php'); 
+  $sql = "SELECT * FROM `admin`";
+  $result = $conn->query($sql);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,7 +74,7 @@ $result = $conn->query($sql);
           <table id="dataTable" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>No.</th>
+              <th>ID.</th>
               <th>Username</th>
               <th>FirstName</th>
               <th>LastName</th>
@@ -82,10 +85,12 @@ $result = $conn->query($sql);
             </thead>
             <tbody>
             <?php 
-            $num = 0;
-            while ($row = $result->fetch_assoc()) {
+
+              $num = 0;
+              while($row = $result->fetch_assoc()){ 
               $num++;
-              ?>
+
+            ?>
               <tr>
                 <td><?php echo $num; ?></td>
                 <td><?php echo $row['username']; ?></td>
@@ -98,11 +103,11 @@ $result = $conn->query($sql);
                   </a> 
                 </td>
                 <td>
-                  <?php if($row['id'] != 1){ ?>
+                <?php if($row['id'] != 1) {?>
                   <a href="#" onclick="deleteItem(<?php echo $row['id']; ?>);" class="btn btn-sm btn-danger">
                     <i class="fas fa-trash-alt"></i> Delete
                   </a>
-                  <?php } ?>
+                <?php } ?>
                 </td>
               </tr>
             <?php } ?>
@@ -155,7 +160,7 @@ $result = $conn->query($sql);
   function deleteItem (id) { 
     if( confirm('Are you sure, you want to delete this item?') == true){
       window.location=`delete.php?id=${id}`;
-      //window.location='delete.php?id='+id;
+      // window.location='delete.php?id='+id;
     }
   };
 

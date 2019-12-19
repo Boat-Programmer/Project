@@ -1,12 +1,12 @@
 <?php 
-
+   session_start();
    require_once('php/connect.php');
    if (!isset($_SESSION['id'])) {
        header('location:index.php');
    } 
    $sql = "SELECT * FROM `members` WHERE `id` = '".$_SESSION['id']."' ";
    $result = $conn->query($sql);
-   $row = $result->fetch_assoc();
+   $row = $result->fetch_assoc(); 
    
    //  ชุดคำสั่งป้องกันการแฮค  
    if(!$result->num_rows){
@@ -31,82 +31,8 @@
 </head>
 
 <body>
-
-    <!-- Section Navber -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-alpha">
-        <div class="container mr-auto">
-            <a class="navbar-brand" href="#">
-                <!-- <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
-                class="d-inline-block align-top" alt=""> -->
-                EasyPay
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <?php if(isset($_SESSION['id'])){ ?>
-                <!-- setting text Right -> mr-auto && Left -> ml-auto  && Text-Center -->
-                <ul class="navbar-nav ml-auto text-center">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="about.php">About us</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Contents</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo $_SESSION['name']; ?>
-                            <img src="assets/images/<?php echo $_SESSION['image']; ?>" class="rounded-circle"
-                                width="30px" alt="">
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="profile.php">ประวัติส่วนตัว</a>
-                            <a class="dropdown-item" href="changePassword.php">เปลี่ยนรหัสผ่าน</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="php/logout.php">ออกจากระบบ</a>
-                        </div>
-                    </li>
-
-                </ul>
-
-
-                <?php } else { ?>
-                <ul class="navbar-nav ml-auto text-center">
-                    <li class="nav-item link">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="about.php">About us</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Contents</a>
-                    </li>
-                    <button type="button" class="btn btn-warning m-md-1 mt-3" data-toggle="modal" data-target="#login">
-                        เข้าสู่ระบบ
-                    </button>
-                    <button type="button" class="btn btn-warning m-md-1 mt-3" data-toggle="modal"
-                        data-target="#register">
-                        สมัครสมาชิก
-                    </button>
-                </ul>
-                <?php } ?>
-            </div>
-        </div>
-    </nav>
-
+   
+   
     <!-- Section Jumbotron -->
     <section class="jumbotron jumbotron-fluid text-center">
         <div class="container my-5 my-sm-1">

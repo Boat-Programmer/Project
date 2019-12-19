@@ -32,16 +32,16 @@
                 <h4>เมนู</h4>
                 <ul class="navbar-nav">
                     <li class="nav-item <?php echo $file_name == 'index' ? 'active': '' ?>">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="index.php"><i class="fas fa-home fa-fw"></i> Home</a>
                     </li>
                     <li class="nav-item <?php echo $file_name == 'about' ? 'active': '' ?>">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" href="about.php"><i class="fas fa-address-card fa-fw"></i> About</a>
                     </li>
                     <li class="nav-item <?php echo $file_name == 'blog' || $file_name == 'blog-detail' ? 'active': '' ?>">
-                        <a class="nav-link" href="blog.php">Blog</a>
+                        <a class="nav-link" href="blog.php"><i class="fas fa-clipboard-list fa-fw"></i> Blog</a>
                     </li>
                     <li class="nav-item <?php echo $file_name == 'contact' ? 'active': '' ?>">
-                        <a class="nav-link" href="contact.php">Contact</a>
+                        <a class="nav-link" href="contact.php"><i class="fas fa-comments fa-fw"></i> Contact</a>
                     </li>
                 </ul>
             </div>
